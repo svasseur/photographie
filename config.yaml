@@ -1,4 +1,4 @@
-baseURL: https://eternity.bora.sh # todo: change site url.
+baseURL: https://thankful-smoke-02ad82403.2.azurestaticapps.net # todo: change site url.
 title: Photographie # todo: change site name.
 defaultContentLanguage: 'fr'
 theme: eternity
@@ -26,7 +26,7 @@ params:
       url: 'mailto:sebastien.vasseur@gmail.com'
       landing: true
     - icon: 'fab fa-instagram fa-lg'
-      url: 'https://instagram.bora.sh/svasseur'
+      url: 'https://instagram.com/svasseur'
       landing: true
   homepage: "/work" # homepage link, mostly same with menu.main[0]
   specialPages:
