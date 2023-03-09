@@ -5,7 +5,7 @@ url: work
 
 <div align="center">
 	<p>
-        Site photographie.
+        Selection de photographies.
 	</p>
 	
 </div>
