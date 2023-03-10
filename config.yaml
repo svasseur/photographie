@@ -13,7 +13,7 @@ params:
   portfolio:
     columns:
       desktop:
-        paris: 4
+        paris: 3
         facade: 4
         archive: 6
         default: 3
