@@ -16,12 +16,16 @@ params:
         paris: 3
         facade: 4
         archive: 6
+        expo: 3
         default: 3
       mobile:
         default: 2
         archive: 3
   socials:
     # todo: change these links.
+    - icon: 'fa fa-camera-retro fa-lg'
+      url: 'https://sebastienvasseur.myportfolio.com/'
+      landing: true
     - icon: 'far fa-envelope fa-lg'
       url: 'mailto:sebastien.vasseur@gmail.com'
       landing: true
@@ -65,6 +69,9 @@ menu:
     - name: archive
       url: /tags/archive/
       weight: 4
+    - name: expo
+      url: /tags/expo/
+      weight: 5
     - name: about
       url: /about/
-      weight: 5
+      weight: 6
