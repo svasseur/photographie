@@ -5,7 +5,7 @@ url: work
 
 <div align="center">
 	<p>
-        test cloud Azure. portfolio en haut a gauche
+        test cloud Azure. portfolio en haut a droite
 	</p>
 	
 </div>
