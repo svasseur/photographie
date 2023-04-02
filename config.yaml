@@ -72,6 +72,9 @@ menu:
     - name: expo
       url: /tags/expo/
       weight: 5
+    - name: test
+      url: /test/
+      weight: 6
     - name: about
       url: /about/
-      weight: 6
+      weight: 7
