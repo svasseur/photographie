@@ -77,7 +77,7 @@ resource "azurerm_subnet" "SubNet2" {
 az network vnet create \
   --name $vnetName \
   --resource-group $rgNetwork \
-  --dns-servers 172.20.16.10 172.20.16.11
+  --dns-servers xxx.10 xxx.11
   --address-prefixes 10.59.0.0/20
 
 # subnet
@@ -104,3 +104,39 @@ az network vnet subnet create \
    --vnet-name $vnetName \
    --address-prefixes 10.59.2.0/24
 ```
+
+**creation VM + SSD **
+```
+   az vm create --name vmlinux1 \
+     --resource-group norsys_infra \
+     --location francecentral \
+     --public-ip-address "" \
+     --size Standard_B1ls \
+     --subnet /subscriptions/xx-df0b-4e99-97f9-xxxxxx/resourceGroups/norsys_network/providers/Microsoft.Network/virtualNetworks/norsysVnet/subnets/norsysSubnet1 \
+     --storage-sku Standard_LRS \
+     --admin-username azureid \
+     --ssh-key-values ~/.ssh/infra.pub \
+     --image Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest 
+     #--private-ip-address 10.59.1.4 
+  
+az vm disk attach -g norsys_infra \
+      --vm-name vmlinux1 \
+      --size-gb 128 \
+      --sku StandardSSD_LRS \
+      --name disk_vmlinux1 --new
+
+ipslave1=$(az vm list-ip-addresses --resource-group norsys_infra --name vmlinux1 --query [0].virtualMachine.network.privateIpAddresses[0] -o tsv)
+ 
+ssh -o "StrictHostKeyChecking no" azureid@$ipslave1 sudo apt update 
+
+      # proc pour add disque aprés ssh machine  
+ssh -o "StrictHostKeyChecking no" azureid@$ipslave1 lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep -i "sd"
+ssh -o "StrictHostKeyChecking no" azureid@$ipslave1 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+ssh -o "StrictHostKeyChecking no" azureid@$ipslave1 sudo mkfs.xfs /dev/sdc1
+ssh -o "StrictHostKeyChecking no" azureid@$ipslave1 sudo partprobe /dev/sdc1
+ssh -o "StrictHostKeyChecking no" azureid@$ipslave1 sudo mkdir /data
+ssh -o "StrictHostKeyChecking no" azureid@$ipslave1 sudo mount /dev/sdc1 /data
+
+
+
+``` 
