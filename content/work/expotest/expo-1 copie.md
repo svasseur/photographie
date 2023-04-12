@@ -1,5 +1,5 @@
 ---
-weight: 7
+weight: 4
 images:
 - /images/06082022-L1002230.jpg
 title: 
