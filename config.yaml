@@ -16,7 +16,6 @@ params:
         paris: 3
         facade: 4
         archive: 6
-        expo: 3
         default: 3
       mobile:
         default: 2
@@ -69,12 +68,6 @@ menu:
     - name: archive
       url: /tags/archive/
       weight: 4
-    - name: expo
-      url: /tags/expo/
-      weight: 5
-    - name: test
-      url: /test/
-      weight: 6
     - name: about
       url: /about/
       weight: 7
